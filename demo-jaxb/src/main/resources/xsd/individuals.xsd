@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jxb:extensionBindingPrefixes="xjc"
+           elementFormDefault="qualified"
+           jxb:version="2.1">
+  <xs:annotation>
+    <xs:appinfo>
+      <jxb:globalBindings>
+        <xjc:simple/>
+      </jxb:globalBindings>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:complexType name="AddressType">
+    <xs:attribute name="streetName" type="xs:string" use="required"/>
+    <xs:attribute name="streetNumber" type="xs:string" use="required"/>
+    <xs:attribute name="cityName" type="xs:string" use="required"/>
+    <xs:attribute name="zipCode" type="xs:string" use="required"/>
+    <xs:attribute name="countryName" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="PensionType">
+    <xs:attribute name="nir" type="xs:string" use="required"/>
+    <xs:attribute name="pointsNumber" type="xs:integer" use="required"/>
+    <xs:attribute name="codeFede" type="xs:string" use="required"/>
+    <xs:attribute name="inst" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="IndividualType">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="addressType" type="AddressType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="pensionType" type="PensionType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="firstName" type="xs:string" use="required"/>
+    <xs:attribute name="lastName" type="xs:string" use="required"/>
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+    <xs:attribute name="birthDate" type="xs:date" use="required"/>
+  </xs:complexType>
+  <xs:element name="individuals">
+    <xs:complexType>
+      <xs:sequence>
+        <!--xs:element name="individualList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="individual" type="IndividualType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element-->
+        <xs:element name="individualType" type="IndividualType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

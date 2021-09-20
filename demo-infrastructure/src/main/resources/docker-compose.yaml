@@ -1,0 +1,93 @@
+version: "2.4"
+networks:
+  demo-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.96.0/20
+services:
+  database:
+    image: postgres:latest
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.2
+    hostname: postgreSQL
+    container_name: postgreSQL
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "demo"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  activemq:
+    #image: vromero/activemq-artemis:2.6.1
+    image: rmohr/activemq
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.20
+    hostname: activemq
+    container_name: activemq
+    user: root
+    #environment:
+      #ENABLE_JMX_EXPORTER: "true"
+      #ARTEMIS_MIN_MEMORY: "1512M"
+      #ARTEMIS_MAX_MEMORY: "2000M"
+      #ARTEMIS_USERNAME: "user"
+      #ARTEMIS_PASSWORD: "password"
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    volumes:
+      - ./active-mq/conf/:/opt/activemq/conf
+      - ./active-mq/data/:/opt/activemq/data
+  adminer:
+    image: adminer
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.10
+    depends_on:
+      database:
+        condition: service_healthy
+    hostname: adminer
+    container_name: adminer
+    ports:
+      - 8081:8080
+  demo-api:
+    #image: nicolasduminil/demo:0.0.1-SNAPSHOT
+    image: demo-api:0.0.1-SNAPSHOT
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.3
+    environment:
+      DATABASESERVER_PORT: "5432"
+    depends_on:
+      database:
+        condition: service_healthy
+      #activemq:
+        #condition: service_healthy
+    hostname: demo-api
+    container_name: demo-api
+    ports:
+      - "8080:8080"
+  demo-job:
+    image: demo-job:0.0.1-SNAPSHOT
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.5
+    environment:
+      DATABASESERVER_PORT: "5432"
+    depends_on:
+      database:
+        condition: service_healthy
+      #activemq:
+        #condition: service_healthy
+    hostname: demo-job
+    container_name: demo-job
+    ports:
+      - "8085:8080"

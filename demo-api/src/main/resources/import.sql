@@ -1,0 +1,15 @@
+INSERT INTO individuals (id, first_name, last_name, reference, birth_date) VALUES (nextval('individuals_seq'), 'Laurence', 'Charron', 'laurence-charron', '2008-09-29');
+INSERT INTO individuals (id, first_name, last_name, reference, birth_date) VALUES (nextval('individuals_seq'), 'Richard', 'Carrière', 'richard-carrière', '2008-12-09');
+INSERT INTO individuals (id, first_name, last_name, reference, birth_date) VALUES (nextval('individuals_seq'), 'Corinne', 'Langueux', 'corinne-langueux', '1998-12-07');
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'rue de Penthièvre', '49', '29000', 'Quimper', 'France', 1);
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'rue Roussy', '104', '45000', 'Orléans', 'France', 1);
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'rue des Coudriers', '66', '03000', 'Moulins', 'France', 2);
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'rue La Boétie', '33', '75008', 'Paris', 'France', 2);
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'av. Jules Férry', '82', '93240', 'Stains', 'France', 3);
+INSERT INTO addresses (id, street_name, street_number, zip_code, city_name, country_name, individual_id) VALUES (nextval('addresses_seq'), 'rue de la République', '27', '35400', 'Saint Malo', 'France', 3);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '1024', 100, 'cf1', 'inst1', 1);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '10240', 110, 'cf1-a', 'inst1-a', 1);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '2048', 200, 'cf2', 'inst2', 2);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '20480', 210, 'cf2-a', 'inst2-a', 2);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '4096', 300, 'cf3', 'inst3', 3);
+INSERT INTO pensions (id, nir, points_number, code_fede, inst, individual_id) VALUES (nextval('pensions_seq'), '40960', 210, 'cf3-a', 'inst3-a', 3);

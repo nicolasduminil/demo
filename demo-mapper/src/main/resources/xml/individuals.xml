@@ -1,0 +1,20 @@
+<individuals>
+  <individualType firstName="Laurence" lastName="Charron" ref="laurence-charron" birthDate="2008-09-29">
+    <addressType streetName="rue de Penthièvre" streetNumber="49" cityName="Quimper" zipCode="29000" countryName="France"/>
+    <addressType streetName="rue Roussy" streetNumber="104" cityName="Orléans" zipCode="45000" countryName="France"/>
+    <pensionType nir="1024" pointsNumber="100" codeFede="cf1" inst="inst1"/>
+    <pensionType nir="10240" pointsNumber="110" codeFede="cf1-a" inst="inst1-a"/>
+  </individualType>
+  <individualType firstName="Richard" lastName="Carrière" ref="richard-carrière" birthDate="2008-12-09">
+    <addressType streetName="rue des Coudriers" streetNumber="66" cityName="Moulins" zipCode="03000" countryName="France"/>
+    <addressType streetName="rue La Boétie" streetNumber="33" cityName="Paris" zipCode="75008" countryName="France"/>
+    <pensionType nir="2048" pointsNumber="200" codeFede="cf2" inst="inst2"/>
+    <pensionType nir="20480" pointsNumber="210" codeFede="cf2-a" inst="inst2-a"/>
+  </individualType>
+  <individualType firstName="Corinne" lastName="Langueux" ref="corinne-langueux" birthDate="1998-12-07">
+    <addressType streetName="av. Jules Férry" streetNumber="82" cityName="Stains" zipCode="93240" countryName="France"/>
+    <addressType streetName="rue de la République" streetNumber="27" cityName="Saint Malo" zipCode="35400" countryName="France"/>
+    <pensionType nir="4096" pointsNumber="300" codeFede="cf3" inst="inst3"/>
+    <pensionType nir="40960" pointsNumber="310" codeFede="cf3-a" inst="inst3-a"/>
+  </individualType>
+</individuals>

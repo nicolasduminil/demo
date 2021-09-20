@@ -1,0 +1,1 @@
+docker run --user root --rm -ti -v active-mq/conf/:/mnt/conf -v active-mq/data/:/mnt/data rmohr/activemq /bin/sh
