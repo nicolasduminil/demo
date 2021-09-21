@@ -84,6 +84,10 @@
       <groupId>fr.dsirc</groupId>
       <artifactId>demo-mapper</artifactId>
     </dependency>
+    <dependency>
+      <groupId>fr.dsirc</groupId>
+      <artifactId>demo-service</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>

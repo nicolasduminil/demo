@@ -1,9 +1,9 @@
 package fr.dsirc.demo.batch.config;
 
-import fr.dsirc.demo.batch.listeners.*;
-import fr.dsirc.demo.batch.processors.*;
+import fr.dsirc.demo.jaxb.*;
 import fr.dsirc.demo.jms.*;
 import fr.dsirc.demo.jpa.*;
+import fr.dsirc.demo.mapper.*;
 import fr.dsirc.demo.repo.*;
 import lombok.extern.slf4j.*;
 import org.springframework.batch.core.*;
@@ -13,13 +13,9 @@ import org.springframework.batch.core.launch.support.*;
 import org.springframework.batch.core.partition.*;
 import org.springframework.batch.core.partition.support.*;
 import org.springframework.batch.core.repository.*;
-import org.springframework.batch.core.step.tasklet.*;
 import org.springframework.batch.item.*;
 import org.springframework.batch.item.data.*;
 import org.springframework.batch.item.data.builder.*;
-import org.springframework.batch.item.jms.*;
-import org.springframework.batch.item.jms.builder.*;
-import org.springframework.batch.repeat.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.autoconfigure.domain.*;
 import org.springframework.cloud.deployer.resource.support.*;
@@ -33,23 +29,22 @@ import org.springframework.core.env.*;
 import org.springframework.core.io.*;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.config.*;
-import org.springframework.data.repository.core.*;
-import org.springframework.data.repository.core.support.*;
-import org.springframework.jms.core.*;
 import org.springframework.jms.support.converter.*;
 
+import javax.xml.bind.*;
+import java.io.*;
 import java.util.*;
 
 @Configuration
 @EnableBatchProcessing
 @EnableTask
-@EnableJpaRepositories(basePackageClasses = IndividualRepository.class)
-@ComponentScan(basePackages = {"fr.dsirc.demo.jms", "fr.dsirc.demo.repo", "fr.dsirc.demo.jpa", "fr.dsirc.demo.mapper"})
+@EnableJpaRepositories(basePackageClasses = {IndividualRepository.class})
+@ComponentScan(basePackages = {"fr.dsirc.demo.jms", "fr.dsirc.demo.repo", "fr.dsirc.demo.jpa", "fr.dsirc.demo.mapper", "fr.dsirc.demo.services"})
 @EntityScan("fr.dsirc.demo.jpa")
 @Slf4j
 public class JobConfig
 {
-  private static final int GRID_SIZE = 2;
+  private static final int GRID_SIZE = 1;
   @Autowired
   public JobBuilderFactory jobBuilderFactory;
   @Autowired
@@ -74,6 +69,14 @@ public class JobConfig
   private IndividualRepository individualRepository;
   @Autowired
   private JmsProducer jmsProducer;
+  @Autowired
+  private IndividualTypeMapper individualTypeMapper;
+  private final Marshaller marshaller;
+
+  public JobConfig() throws JAXBException
+  {
+    marshaller = JAXBContext.newInstance(IndividualType.class).createMarshaller();
+  }
 
   @Bean
   @StepScope
@@ -123,13 +126,6 @@ public class JobConfig
   }
 
   @Bean
-  @StepScope
-  public Tasklet workerTasklet(final @Value("#{stepExecutionContext['partitionNumber']}") Integer partitionNumber)
-  {
-    return (contribution, chunkContext) -> RepeatStatus.FINISHED;
-  }
-
-  @Bean
   public Step step1()
   {
     return this.stepBuilderFactory.get("step1")
@@ -152,75 +148,39 @@ public class JobConfig
       .build();
   }
 
-
   @Bean
-  @StepScope
-  public ItemProcessor<IndividualEntity, String> individual2XmlItemProcessor()
+  public ItemWriter<IndividualEntity> individualItemWriter()
   {
-    return new Individual2XmlItemProcessor();
-  }
-
-  @Bean
-  public JmsItemWriter<String> jmsItemWriter()
-  {
-    return new JmsItemWriterBuilder<String>()
-      .jmsTemplate(jmsProducer.getJmsTemplate())
-      .build();
-  }
-
-  @Bean
-  @StepScope
-  public DemoStepListener demoStepListener()
-  {
-    return new DemoStepListener();
-  }
-
-  @Bean
-  @StepScope
-  public JpaRepositoryItemReaderListener jpaRepositoryItemReaderListener()
-  {
-    return new JpaRepositoryItemReaderListener();
-  }
-
-  @Bean
-  @StepScope
-  public JmsItemWriterListener jmsItemWriterListener()
-  {
-    return new JmsItemWriterListener();
-  }
-
-  @Bean
-  @StepScope
-  public Individual2XmlProcessorListener individual2XmlProcessorListener()
-  {
-    return new Individual2XmlProcessorListener();
-  }
-
-  @Bean
-  public RepositoryMetadata repositoryMetadata()
-  {
-    return new DefaultRepositoryMetadata(IndividualRepository.class);
+    StringWriter sw = new StringWriter();
+    return (items) -> items.forEach(item ->
+    {
+      try
+      {
+        marshaller.marshal(individualTypeMapper.toIndividualType(item), sw);
+        jmsProducer.send(sw.toString());
+       }
+      catch (JAXBException e)
+      {
+        log.error("### JobConfig.individualItemWriter(): Exception {}", e);
+        e.printStackTrace();
+      }
+    });
   }
 
   @Bean
   public Step workerStep()
   {
     return stepBuilderFactory.get("workerStep")
-      .<IndividualEntity, String>chunk(1)
+      .<IndividualEntity, IndividualEntity>chunk(1)
       .reader(repositoryItemReader())
-      .processor(individual2XmlItemProcessor())
-      .writer(jmsItemWriter())
-      .listener(demoStepListener())
-      .listener(jpaRepositoryItemReaderListener())
-      .listener(individual2XmlProcessorListener())
-      .listener(jmsItemWriterListener())
+      .writer(individualItemWriter())
       .build();
   }
 
   @Bean
   public JobExecutionListener jobExecutionListener()
   {
-    JobExecutionListener listener = new JobExecutionListener()
+    return new JobExecutionListener()
     {
       @Override
       public void beforeJob(JobExecution jobExecution)
@@ -233,7 +193,6 @@ public class JobConfig
       {
       }
     };
-    return listener;
   }
 
   @Bean
@@ -249,11 +208,10 @@ public class JobConfig
   @Profile("!worker")
   public Job partitionedJob()
   {
-    Job job = jobBuilderFactory.get("partitionedJob")
+    return jobBuilderFactory.get("partitionedJob")
       .incrementer(new RunIdIncrementer())
       .listener(jobExecutionListener())
       .start(step1())
       .build();
-    return job;
   }
 }

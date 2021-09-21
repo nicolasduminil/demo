@@ -35,17 +35,12 @@
     <xs:attribute name="ref" type="xs:string" use="required"/>
     <xs:attribute name="birthDate" type="xs:date" use="required"/>
   </xs:complexType>
+  <xs:element name="individualType" type="IndividualType"/>
   <xs:element name="individuals">
     <xs:complexType>
       <xs:sequence>
-        <!--xs:element name="individualList">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="individual" type="IndividualType" maxOccurs="unbounded"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element-->
-        <xs:element name="individualType" type="IndividualType" maxOccurs="unbounded"/>
+        <!--xs:element name="individualType" type="IndividualType" maxOccurs="unbounded"/-->
+        <xs:element ref="individualType" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
