@@ -25,8 +25,27 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    command: postgres -c "max_prepared_transactions=100"
+  database2:
+    image: postgres:latest
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.30
+    hostname: postgreSQL2
+    container_name: postgreSQL2
+    ports:
+      - "8432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "demo2"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: postgres -c "max_prepared_transactions=100"
   activemq:
-    #image: vromero/activemq-artemis:2.6.1
     image: rmohr/activemq
     networks:
       demo-network:
@@ -34,12 +53,6 @@ services:
     hostname: activemq
     container_name: activemq
     user: root
-    #environment:
-      #ENABLE_JMX_EXPORTER: "true"
-      #ARTEMIS_MIN_MEMORY: "1512M"
-      #ARTEMIS_MAX_MEMORY: "2000M"
-      #ARTEMIS_USERNAME: "user"
-      #ARTEMIS_PASSWORD: "password"
     ports:
       - "61616:61616"
       - "8161:8161"
@@ -59,7 +72,6 @@ services:
     ports:
       - 8081:8080
   demo-api:
-    #image: nicolasduminil/demo:0.0.1-SNAPSHOT
     image: demo-api:0.0.1-SNAPSHOT
     networks:
       demo-network:
@@ -69,8 +81,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      #activemq:
-        #condition: service_healthy
     hostname: demo-api
     container_name: demo-api
     ports:
@@ -85,9 +95,19 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      #activemq:
-        #condition: service_healthy
     hostname: demo-job
     container_name: demo-job
     ports:
       - "8085:8080"
+  demo-xa:
+    image: demo-xa:0.0.1-SNAPSHOT
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.7
+    environment:
+      DATABASESERVER_PORT: "5432"
+    depends_on:
+      database2:
+        condition: service_healthy
+    hostname: demo-xa
+    container_name: demo-xa

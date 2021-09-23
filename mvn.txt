@@ -1,0 +1,639 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Demo :: The master POM                                             [pom]
+[INFO] Demo :: The domain module                                          [jar]
+[INFO] Demo :: The JPA module                                             [jar]
+[INFO] Demo :: The data module                                            [jar]
+[INFO] Demo :: the JAXB module                                            [jar]
+[INFO] Demo :: the mapper module                                          [jar]
+[INFO] Demo :: the service module                                         [jar]
+[INFO] Demo :: The API module                                             [jar]
+[INFO] Demo :: The JMS module                                             [jar]
+[INFO] Demo :: The batch processing module                                [jar]
+[INFO] Demo :: the infrastructure module                                  [jar]
+[INFO] 
+[INFO] ---------------------------< fr.dsirc:demo >----------------------------
+[INFO] Building Demo :: The master POM 0.0.1-SNAPSHOT                    [1/11]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo ---
+[INFO] fr.dsirc:demo:pom:0.0.1-SNAPSHOT
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO]       |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] 
+[INFO] ------------------------< fr.dsirc:demo-model >-------------------------
+[INFO] Building Demo :: The domain module 0.0.1-SNAPSHOT                 [2/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-model ---
+[INFO] fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO]       |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-jpa >--------------------------
+[INFO] Building Demo :: The JPA module 0.0.1-SNAPSHOT                    [3/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-jpa ---
+[INFO] fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT
+[INFO] +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] +- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] +- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO]       |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-repo >-------------------------
+[INFO] Building Demo :: The data module 0.0.1-SNAPSHOT                   [4/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-repo ---
+[INFO] fr.dsirc:demo-repo:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.data:spring-data-jpa:jar:2.5.4:compile
+[INFO] |  +- org.springframework:spring-orm:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-context:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-tx:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.9.7:compile
+[INFO] |  \- org.slf4j:slf4j-api:jar:1.7.32:compile
+[INFO] +- org.springframework.data:spring-data-commons:jar:2.5.4:compile
+[INFO] +- fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] |  +- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] |  \- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-jaxb >-------------------------
+[INFO] Building Demo :: the JAXB module 0.0.1-SNAPSHOT                   [5/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-jaxb ---
+[INFO] fr.dsirc:demo-jaxb:jar:0.0.1-SNAPSHOT
+[INFO] +- com.sun.activation:javax.activation:jar:1.2.0:compile
+[INFO] +- javax.xml.bind:jaxb-api:jar:2.3.0:compile
+[INFO] +- com.sun.xml.bind:jaxb-core:jar:2.3.0:compile
+[INFO] +- com.sun.xml.bind:jaxb-impl:jar:2.3.0:compile
+[INFO] +- org.junit.jupiter:junit-jupiter:jar:5.7.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter-api:jar:5.7.2:test
+[INFO] |  |  +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |  |  \- org.junit.platform:junit-platform-commons:jar:1.7.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter-params:jar:5.7.2:test
+[INFO] |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.7.2:test
+[INFO] |     \- org.junit.platform:junit-platform-engine:jar:1.7.2:test
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO]       |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] 
+[INFO] ------------------------< fr.dsirc:demo-mapper >------------------------
+[INFO] Building Demo :: the mapper module 0.0.1-SNAPSHOT                 [6/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-mapper ---
+[INFO] fr.dsirc:demo-mapper:jar:0.0.1-SNAPSHOT
+[INFO] +- org.mapstruct:mapstruct:jar:1.4.2.Final:compile
+[INFO] +- org.mapstruct:mapstruct-processor:jar:1.4.2.Final:provided
+[INFO] +- fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] |  \- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] +- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] +- fr.dsirc:demo-jaxb:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- com.sun.activation:javax.activation:jar:1.2.0:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.0:compile
+[INFO] |  +- com.sun.xml.bind:jaxb-core:jar:2.3.0:compile
+[INFO] |  \- com.sun.xml.bind:jaxb-impl:jar:2.3.0:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.5.4:test
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.5.4:test
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.5.4:test
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.5:test
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.5:test
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.14.1:test
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.14.1:test
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.32:test
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:test
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.28:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.5.4:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.5.4:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.5.0:test
+[INFO] |  |  +- net.minidev:json-smart:jar:2.4.7:test
+[INFO] |  |  |  \- net.minidev:accessors-smart:jar:2.4.7:test
+[INFO] |  |  |     \- org.ow2.asm:asm:jar:9.1:test
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:1.7.32:test
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3:test
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:1.2.2:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.19.0:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.9.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.22:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.22:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:3.2:test
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:3.9.0:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-test:jar:5.3.9:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.8.2:test
+[INFO] +- org.junit.jupiter:junit-jupiter:jar:5.7.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter-api:jar:5.7.2:test
+[INFO] |  |  +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |  |  \- org.junit.platform:junit-platform-commons:jar:1.7.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter-params:jar:5.7.2:test
+[INFO] |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.7.2:test
+[INFO] |     \- org.junit.platform:junit-platform-engine:jar:1.7.2:test
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] 
+[INFO] -----------------------< fr.dsirc:demo-service >------------------------
+[INFO] Building Demo :: the service module 0.0.1-SNAPSHOT                [7/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-service ---
+[INFO] fr.dsirc:demo-service:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO] |  |  \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO] |  |     \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.5.4:compile
+[INFO] |  |  +- ch.qos.logback:logback-classic:jar:1.2.5:compile
+[INFO] |  |  |  \- ch.qos.logback:logback-core:jar:1.2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.14.1:compile
+[INFO] |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.14.1:compile
+[INFO] |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.32:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.28:compile
+[INFO] +- com.sun.activation:javax.activation:jar:1.2.0:compile
+[INFO] +- javax.xml.bind:jaxb-api:jar:2.3.0:compile
+[INFO] +- com.sun.xml.bind:jaxb-core:jar:2.3.0:compile
+[INFO] +- com.sun.xml.bind:jaxb-impl:jar:2.3.0:compile
+[INFO] +- fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] |  +- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] |  \- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] +- fr.dsirc:demo-repo:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:2.5.4:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:5.3.9:compile
+[INFO] |  |  |  \- org.springframework:spring-jdbc:jar:5.3.9:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO] |  |  +- org.springframework:spring-tx:jar:5.3.9:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO] |  |  +- org.aspectj:aspectjrt:jar:1.9.7:compile
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:1.7.32:compile
+[INFO] |  \- org.springframework.data:spring-data-commons:jar:2.5.4:compile
+[INFO] +- fr.dsirc:demo-mapper:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- org.mapstruct:mapstruct:jar:1.4.2.Final:compile
+[INFO] +- fr.dsirc:demo-jaxb:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-api >--------------------------
+[INFO] Building Demo :: The API module 0.0.1-SNAPSHOT                    [8/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-api ---
+[INFO] fr.dsirc:demo-api:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.5.4:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.5.4:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.5:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.5:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.14.1:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.14.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.32:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.28:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.5.4:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.12.4:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.12.4:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.12.4:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.12.4:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.12.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.5.4:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.52:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.52:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.52:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.3.9:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.3.9:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:2.5.4:compile
+[INFO] |  |  \- org.springframework.boot:spring-boot-actuator:jar:2.5.4:compile
+[INFO] |  \- io.micrometer:micrometer-core:jar:1.7.3:compile
+[INFO] |     +- org.hdrhistogram:HdrHistogram:jar:2.1.12:compile
+[INFO] |     \- org.latencyutils:LatencyUtils:jar:2.0.3:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-data-jpa:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-aop:jar:2.5.4:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.9.7:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:2.5.4:compile
+[INFO] |  |  \- com.zaxxer:HikariCP:jar:4.0.3:compile
+[INFO] |  +- jakarta.transaction:jakarta.transaction-api:jar:1.3.3:compile
+[INFO] |  +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] |  +- org.hibernate:hibernate-core:jar:5.4.32.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.4.2.Final:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.27.0-GA:compile
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.22:compile
+[INFO] |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  +- org.jboss:jandex:jar:2.2.3.Final:compile
+[INFO] |  |  +- org.dom4j:dom4j:jar:2.1.3:compile
+[INFO] |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:5.1.2.Final:compile
+[INFO] |  |  \- org.glassfish.jaxb:jaxb-runtime:jar:2.3.5:compile
+[INFO] |  |     +- org.glassfish.jaxb:txw2:jar:2.3.5:compile
+[INFO] |  |     +- com.sun.istack:istack-commons-runtime:jar:3.0.12:compile
+[INFO] |  |     \- com.sun.activation:jakarta.activation:jar:1.2.2:runtime
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:2.5.4:compile
+[INFO] |  |  +- org.springframework.data:spring-data-commons:jar:2.5.4:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:5.3.9:compile
+[INFO] |  \- org.springframework:spring-aspects:jar:5.3.9:compile
+[INFO] +- com.h2database:h2:jar:1.4.200:runtime
+[INFO] +- org.postgresql:postgresql:jar:42.2.23:runtime
+[INFO] |  \- org.checkerframework:checker-qual:jar:3.5.0:runtime
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] +- io.springfox:springfox-swagger2:jar:2.9.2:compile
+[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.20:compile
+[INFO] |  +- io.swagger:swagger-models:jar:1.5.20:compile
+[INFO] |  +- io.springfox:springfox-spi:jar:2.9.2:compile
+[INFO] |  |  \- io.springfox:springfox-core:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-schema:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-swagger-common:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-spring-web:jar:2.9.2:compile
+[INFO] |  +- com.google.guava:guava:jar:19.0:compile
+[INFO] |  +- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.32:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
+[INFO] |  \- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
+[INFO] +- io.springfox:springfox-swagger-ui:jar:2.9.2:compile
+[INFO] +- joda-time:joda-time:jar:2.9.4:compile
+[INFO] +- fr.dsirc:demo-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- com.sun.activation:javax.activation:jar:1.2.0:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.0:compile
+[INFO] |  +- com.sun.xml.bind:jaxb-core:jar:2.3.0:compile
+[INFO] |  +- com.sun.xml.bind:jaxb-impl:jar:2.3.0:compile
+[INFO] |  +- fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] |  +- fr.dsirc:demo-repo:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- fr.dsirc:demo-mapper:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- org.mapstruct:mapstruct:jar:1.4.2.Final:compile
+[INFO] |  \- fr.dsirc:demo-jaxb:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.5.4:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.5.4:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.5.4:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.5.0:test
+[INFO] |  |  \- net.minidev:json-smart:jar:2.4.7:test
+[INFO] |  |     \- net.minidev:accessors-smart:jar:2.4.7:test
+[INFO] |  |        \- org.ow2.asm:asm:jar:9.1:test
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3:compile
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:1.2.2:compile
+[INFO] |  +- org.assertj:assertj-core:jar:3.19.0:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.7.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.7.2:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.7.2:test
+[INFO] |  |     \- org.junit.platform:junit-platform-engine:jar:1.7.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.9.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.22:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:3.2:test
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:3.9.0:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-test:jar:5.3.9:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.8.2:test
+[INFO] +- io.projectreactor:reactor-test:jar:3.4.9:test
+[INFO] |  \- io.projectreactor:reactor-core:jar:3.4.9:test
+[INFO] |     \- org.reactivestreams:reactive-streams:jar:1.0.3:test
+[INFO] +- org.springframework.batch:spring-batch-test:jar:4.3.3:test
+[INFO] |  +- junit:junit:jar:4.13.2:test
+[INFO] |  |  \- org.hamcrest:hamcrest-core:jar:2.2:test
+[INFO] |  +- org.springframework.batch:spring-batch-core:jar:4.3.3:test
+[INFO] |  |  +- javax.batch:javax.batch-api:jar:1.0:test
+[INFO] |  |  +- org.codehaus.jettison:jettison:jar:1.4.1:test
+[INFO] |  |  \- org.springframework.batch:spring-batch-infrastructure:jar:4.3.3:test
+[INFO] |  |     \- org.springframework.retry:spring-retry:jar:1.3.1:test
+[INFO] |  |        \- javax.annotation:javax.annotation-api:jar:1.3.2:test
+[INFO] |  \- org.springframework:spring-jdbc:jar:5.3.9:compile
+[INFO] +- org.testcontainers:junit-jupiter:jar:1.15.3:test
+[INFO] |  +- org.testcontainers:testcontainers:jar:1.15.3:test
+[INFO] |  |  +- org.apache.commons:commons-compress:jar:1.20:test
+[INFO] |  |  +- org.rnorth.duct-tape:duct-tape:jar:1.0.8:test
+[INFO] |  |  +- org.rnorth.visible-assertions:visible-assertions:jar:2.1.2:test
+[INFO] |  |  |  \- net.java.dev.jna:jna:jar:5.2.0:test
+[INFO] |  |  +- com.github.docker-java:docker-java-api:jar:3.2.8:test
+[INFO] |  |  \- com.github.docker-java:docker-java-transport-zerodep:jar:3.2.8:test
+[INFO] |  |     \- com.github.docker-java:docker-java-transport:jar:3.2.8:test
+[INFO] |  \- org.junit.jupiter:junit-jupiter-api:jar:5.7.2:test
+[INFO] |     +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |     +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |     \- org.junit.platform:junit-platform-commons:jar:1.7.2:test
+[INFO] +- org.testcontainers:postgresql:jar:1.15.3:test
+[INFO] |  \- org.testcontainers:jdbc:jar:1.15.3:test
+[INFO] |     \- org.testcontainers:database-commons:jar:1.15.3:test
+[INFO] +- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-jms >--------------------------
+[INFO] Building Demo :: The JMS module 0.0.1-SNAPSHOT                    [9/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-jms ---
+[INFO] fr.dsirc:demo-jms:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO] |  |  \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO] |  |     +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO] |  |     \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.5.4:compile
+[INFO] |  |  +- ch.qos.logback:logback-classic:jar:1.2.5:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-core:jar:1.2.5:compile
+[INFO] |  |  |  \- org.slf4j:slf4j-api:jar:1.7.32:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.14.1:compile
+[INFO] |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.14.1:compile
+[INFO] |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.32:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.28:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-activemq:jar:2.5.4:compile
+[INFO] |  +- org.springframework:spring-jms:jar:5.3.9:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO] |  |  +- org.springframework:spring-messaging:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:5.3.9:compile
+[INFO] |  +- org.apache.activemq:activemq-broker:jar:5.16.3:compile
+[INFO] |  |  +- org.apache.activemq:activemq-client:jar:5.16.3:compile
+[INFO] |  |  |  +- org.fusesource.hawtbuf:hawtbuf:jar:1.11:compile
+[INFO] |  |  |  \- org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:jar:1.0.1:compile
+[INFO] |  |  +- org.apache.activemq:activemq-openwire-legacy:jar:5.16.3:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-databind:jar:2.12.4:compile
+[INFO] |  |     +- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] |  |     \- com.fasterxml.jackson.core:jackson-core:jar:2.12.4:compile
+[INFO] |  \- jakarta.jms:jakarta.jms-api:jar:2.0.3:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-jta-atomikos:jar:2.5.4:compile
+[INFO] |  +- com.atomikos:transactions-jms:jar:4.0.6:compile
+[INFO] |  +- com.atomikos:transactions-jta:jar:4.0.6:compile
+[INFO] |  |  +- com.atomikos:transactions-api:jar:4.0.6:compile
+[INFO] |  |  +- com.atomikos:transactions:jar:4.0.6:runtime
+[INFO] |  |  \- com.atomikos:atomikos-util:jar:4.0.6:compile
+[INFO] |  +- com.atomikos:transactions-jdbc:jar:4.0.6:compile
+[INFO] |  \- jakarta.transaction:jakarta.transaction-api:jar:1.3.3:compile
+[INFO] +- org.postgresql:postgresql:jar:42.2.23:compile
+[INFO] |  \- org.checkerframework:checker-qual:jar:3.5.0:runtime
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO] 
+[INFO] -------------------------< fr.dsirc:demo-job >--------------------------
+[INFO] Building Demo :: The batch processing module 0.0.1-SNAPSHOT      [10/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-job ---
+[INFO] fr.dsirc:demo-job:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.5.4:compile
+[INFO] |  |  +- ch.qos.logback:logback-classic:jar:1.2.5:compile
+[INFO] |  |  |  \- ch.qos.logback:logback-core:jar:1.2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.14.1:compile
+[INFO] |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.14.1:compile
+[INFO] |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.32:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.28:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.5.4:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.12.4:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.12.4:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.12.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.5.4:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.52:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.52:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.52:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.3.9:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.3.9:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-batch:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:2.5.4:compile
+[INFO] |  |  +- com.zaxxer:HikariCP:jar:4.0.3:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:5.3.9:compile
+[INFO] |  \- org.springframework.batch:spring-batch-core:jar:4.3.3:compile
+[INFO] |     +- javax.batch:javax.batch-api:jar:1.0:compile
+[INFO] |     +- org.codehaus.jettison:jettison:jar:1.4.1:compile
+[INFO] |     \- org.springframework.batch:spring-batch-infrastructure:jar:4.3.3:compile
+[INFO] +- org.springframework.batch:spring-batch-integration:jar:4.3.3:compile
+[INFO] |  +- org.springframework.integration:spring-integration-core:jar:5.5.3:compile
+[INFO] |  |  \- io.projectreactor:reactor-core:jar:3.4.9:compile
+[INFO] |  |     \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[INFO] |  +- org.springframework.retry:spring-retry:jar:1.3.1:compile
+[INFO] |  |  \- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-context:jar:5.3.9:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:5.3.9:compile
+[INFO] |  \- org.springframework:spring-tx:jar:5.3.9:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:2.5.4:compile
+[INFO] |  |  \- org.springframework.boot:spring-boot-actuator:jar:2.5.4:compile
+[INFO] |  \- io.micrometer:micrometer-core:jar:1.7.3:compile
+[INFO] |     +- org.hdrhistogram:HdrHistogram:jar:2.1.12:compile
+[INFO] |     \- org.latencyutils:LatencyUtils:jar:2.0.3:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-data-jpa:jar:2.5.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-aop:jar:2.5.4:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.9.7:compile
+[INFO] |  +- jakarta.transaction:jakarta.transaction-api:jar:1.3.3:compile
+[INFO] |  +- jakarta.persistence:jakarta.persistence-api:jar:2.2.3:compile
+[INFO] |  +- org.hibernate:hibernate-core:jar:5.4.32.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.4.2.Final:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.27.0-GA:compile
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.22:compile
+[INFO] |  |  +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |  +- org.jboss:jandex:jar:2.2.3.Final:compile
+[INFO] |  |  +- org.dom4j:dom4j:jar:2.1.3:compile
+[INFO] |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:5.1.2.Final:compile
+[INFO] |  |  \- org.glassfish.jaxb:jaxb-runtime:jar:2.3.5:compile
+[INFO] |  |     +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.3:compile
+[INFO] |  |     +- org.glassfish.jaxb:txw2:jar:2.3.5:compile
+[INFO] |  |     +- com.sun.istack:istack-commons-runtime:jar:3.0.12:compile
+[INFO] |  |     \- com.sun.activation:jakarta.activation:jar:1.2.2:runtime
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:2.5.4:compile
+[INFO] |  |  \- org.springframework:spring-orm:jar:5.3.9:compile
+[INFO] |  \- org.springframework:spring-aspects:jar:5.3.9:compile
+[INFO] +- org.springframework.cloud:spring-cloud-starter-task:jar:2.3.2:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-task-core:jar:2.3.2:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-deployer-autoconfigure:jar:2.5.0:compile
+[INFO] |  |  \- org.springframework.cloud:spring-cloud-deployer-resource-support:jar:2.5.0:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-task-batch:jar:2.3.2:compile
+[INFO] |  \- org.springframework.cloud:spring-cloud-task-stream:jar:2.3.2:compile
+[INFO] +- org.springframework.cloud:spring-cloud-deployer-local:jar:2.5.2:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-deployer-spi:jar:2.5.2:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-deployer-resource-maven:jar:2.5.2:compile
+[INFO] |  |  +- org.apache.maven:maven-model-builder:jar:3.6.2:compile
+[INFO] |  |  |  +- org.codehaus.plexus:plexus-utils:jar:3.2.1:compile
+[INFO] |  |  |  +- org.codehaus.plexus:plexus-interpolation:jar:1.25:compile
+[INFO] |  |  |  +- javax.inject:javax.inject:jar:1:compile
+[INFO] |  |  |  +- org.apache.maven:maven-model:jar:3.6.2:compile
+[INFO] |  |  |  +- org.apache.maven:maven-artifact:jar:3.6.2:compile
+[INFO] |  |  |  |  \- org.apache.commons:commons-lang3:jar:3.12.0:compile
+[INFO] |  |  |  +- org.apache.maven:maven-builder-support:jar:3.6.2:compile
+[INFO] |  |  |  \- org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.3:compile
+[INFO] |  |  +- org.apache.maven:maven-resolver-provider:jar:3.6.2:compile
+[INFO] |  |  |  +- org.apache.maven:maven-repository-metadata:jar:3.6.2:compile
+[INFO] |  |  |  +- org.apache.maven.resolver:maven-resolver-api:jar:1.4.1:compile
+[INFO] |  |  |  +- org.apache.maven.resolver:maven-resolver-spi:jar:1.4.1:compile
+[INFO] |  |  |  \- org.apache.maven.resolver:maven-resolver-util:jar:1.4.1:compile
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-connector-basic:jar:1.4.1:compile
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-transport-file:jar:1.4.1:compile
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-transport-http:jar:1.4.1:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpclient:jar:4.5.13:compile
+[INFO] |  |  |  |  \- commons-codec:commons-codec:jar:1.15:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpcore:jar:4.4.14:compile
+[INFO] |  |  |  \- org.slf4j:jcl-over-slf4j:jar:1.7.32:runtime
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-transport-wagon:jar:1.4.1:compile
+[INFO] |  |  |  \- org.apache.maven.wagon:wagon-provider-api:jar:3.0.0:compile
+[INFO] |  |  +- org.apache.maven.resolver:maven-resolver-impl:jar:1.4.1:compile
+[INFO] |  |  \- org.apache.maven.wagon:wagon-http:jar:3.3.4:compile
+[INFO] |  |     \- org.apache.maven.wagon:wagon-http-shared:jar:3.3.4:compile
+[INFO] |  |        +- org.jsoup:jsoup:jar:1.12.1:compile
+[INFO] |  |        \- commons-io:commons-io:jar:2.10.0:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-deployer-resource-docker:jar:2.5.2:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.12.4:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.12.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:2.5.4:compile
+[INFO] |  |  \- org.hibernate.validator:hibernate-validator:jar:6.2.0.Final:compile
+[INFO] |  \- org.hibernate.validator:hibernate-validator-annotation-processor:jar:6.2.0.Final:compile
+[INFO] +- org.postgresql:postgresql:jar:42.2.23:runtime
+[INFO] |  \- org.checkerframework:checker-qual:jar:3.5.0:runtime
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] +- io.springfox:springfox-swagger2:jar:2.9.2:compile
+[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.20:compile
+[INFO] |  +- io.swagger:swagger-models:jar:1.5.20:compile
+[INFO] |  +- io.springfox:springfox-spi:jar:2.9.2:compile
+[INFO] |  |  \- io.springfox:springfox-core:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-schema:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-swagger-common:jar:2.9.2:compile
+[INFO] |  +- io.springfox:springfox-spring-web:jar:2.9.2:compile
+[INFO] |  +- com.google.guava:guava:jar:19.0:compile
+[INFO] |  +- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.32:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
+[INFO] |  \- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
+[INFO] +- io.springfox:springfox-swagger-ui:jar:2.9.2:compile
+[INFO] +- fr.dsirc:demo-model:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.4:compile
+[INFO] +- fr.dsirc:demo-repo:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework.data:spring-data-commons:jar:2.5.4:compile
+[INFO] |  \- fr.dsirc:demo-jpa:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     \- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] +- fr.dsirc:demo-jms:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-activemq:jar:2.5.4:compile
+[INFO] |  |  +- org.springframework:spring-jms:jar:5.3.9:compile
+[INFO] |  |  +- org.apache.activemq:activemq-broker:jar:5.16.3:compile
+[INFO] |  |  |  +- org.apache.activemq:activemq-client:jar:5.16.3:compile
+[INFO] |  |  |  |  +- org.fusesource.hawtbuf:hawtbuf:jar:1.11:compile
+[INFO] |  |  |  |  \- org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:jar:1.0.1:compile
+[INFO] |  |  |  \- org.apache.activemq:activemq-openwire-legacy:jar:5.16.3:compile
+[INFO] |  |  \- jakarta.jms:jakarta.jms-api:jar:2.0.3:compile
+[INFO] |  \- org.springframework.boot:spring-boot-starter-jta-atomikos:jar:2.5.4:compile
+[INFO] |     +- com.atomikos:transactions-jms:jar:4.0.6:compile
+[INFO] |     +- com.atomikos:transactions-jta:jar:4.0.6:compile
+[INFO] |     |  +- com.atomikos:transactions-api:jar:4.0.6:compile
+[INFO] |     |  +- com.atomikos:transactions:jar:4.0.6:runtime
+[INFO] |     |  \- com.atomikos:atomikos-util:jar:4.0.6:compile
+[INFO] |     \- com.atomikos:transactions-jdbc:jar:4.0.6:compile
+[INFO] +- fr.dsirc:demo-mapper:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.mapstruct:mapstruct:jar:1.4.2.Final:compile
+[INFO] |  \- fr.dsirc:demo-jaxb:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- fr.dsirc:demo-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- com.sun.activation:javax.activation:jar:1.2.0:compile
+[INFO] |  +- javax.xml.bind:jaxb-api:jar:2.3.0:compile
+[INFO] |  +- com.sun.xml.bind:jaxb-core:jar:2.3.0:compile
+[INFO] |  \- com.sun.xml.bind:jaxb-impl:jar:2.3.0:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO] 
+[INFO] --------------------< fr.dsirc:demo-infrastructure >--------------------
+[INFO] Building Demo :: the infrastructure module 0.0.1-SNAPSHOT        [11/11]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ demo-infrastructure ---
+[INFO] fr.dsirc:demo-infrastructure:jar:0.0.1-SNAPSHOT
+[INFO] +- org.projectlombok:lombok:jar:1.18.20:compile
+[INFO] \- org.springframework.boot:spring-boot-autoconfigure:jar:2.5.4:compile
+[INFO]    \- org.springframework.boot:spring-boot:jar:2.5.4:compile
+[INFO]       +- org.springframework:spring-core:jar:5.3.9:compile
+[INFO]       |  \- org.springframework:spring-jcl:jar:5.3.9:compile
+[INFO]       \- org.springframework:spring-context:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-aop:jar:5.3.9:compile
+[INFO]          +- org.springframework:spring-beans:jar:5.3.9:compile
+[INFO]          \- org.springframework:spring-expression:jar:5.3.9:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Demo :: The master POM 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] Demo :: The master POM ............................. SUCCESS [  0.439 s]
+[INFO] Demo :: The domain module .......................... SUCCESS [  0.051 s]
+[INFO] Demo :: The JPA module ............................. SUCCESS [  0.038 s]
+[INFO] Demo :: The data module ............................ SUCCESS [  0.043 s]
+[INFO] Demo :: the JAXB module ............................ SUCCESS [  0.050 s]
+[INFO] Demo :: the mapper module .......................... SUCCESS [  0.074 s]
+[INFO] Demo :: the service module ......................... SUCCESS [  0.049 s]
+[INFO] Demo :: The API module ............................. SUCCESS [  0.130 s]
+[INFO] Demo :: The JMS module ............................. SUCCESS [  0.037 s]
+[INFO] Demo :: The batch processing module ................ SUCCESS [  0.307 s]
+[INFO] Demo :: the infrastructure module .................. SUCCESS [  0.015 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.766 s
+[INFO] Finished at: 2021-09-22T14:12:22+02:00
+[INFO] ------------------------------------------------------------------------

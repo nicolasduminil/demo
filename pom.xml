@@ -14,6 +14,7 @@
     <module>demo-jaxb</module>
     <module>demo-jms</module>
     <module>demo-job</module>
+    <module>demo-xa</module>
     <module>demo-infrastructure</module>
   </modules>
   <groupId>fr.dsirc</groupId>
@@ -53,9 +54,9 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>testcontainers-bom</artifactId>
-        <version>${testcontainers.version}</version>
+        <groupId>org.apache.camel.springboot</groupId>
+        <artifactId>camel-spring-boot-dependencies</artifactId>
+        <version>3.11.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -97,7 +98,7 @@
       <dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger2</artifactId>
-        <version>2.9.2</version>
+        <version>3.0.0</version>
       </dependency>
       <dependency>
         <groupId>io.springfox</groupId>

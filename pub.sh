@@ -1,0 +1,1 @@
+curl -u admin:admin -d "body=message" http://192.168.96.20:8161/api/message/demoQueue?type=queue
