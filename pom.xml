@@ -15,6 +15,7 @@
     <module>demo-jms</module>
     <module>demo-job</module>
     <module>demo-xa</module>
+    <module>demo-eureka</module>
     <module>demo-infrastructure</module>
   </modules>
   <groupId>fr.dsirc</groupId>

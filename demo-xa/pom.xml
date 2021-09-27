@@ -9,15 +9,29 @@
     <relativePath/>
   </parent>
   <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.dsirc</groupId>
   <artifactId>demo-xa</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <name>Demo :: the XA module</name>
+  <properties>
+    <java.version>11</java.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-spring-boot-dependencies</artifactId>
-        <!--version>3.11.2</version-->
         <version>3.4.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2020.0.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -43,6 +57,20 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-activemq</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>com.netflix.ribbon</groupId>
+          <artifactId>ribbon-eureka</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>

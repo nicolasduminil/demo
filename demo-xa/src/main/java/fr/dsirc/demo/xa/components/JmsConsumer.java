@@ -10,6 +10,7 @@ public class JmsConsumer extends RouteBuilder
   public void configure() throws Exception
   {
     from("activemq:queue:demoQueue")
+      .log (">>> We got :#${body}")
       .routeId("demoRoute")
       .transacted("policyPropagationRequired")
       .to("sql:insert into message(contents) values(:#${body})")
