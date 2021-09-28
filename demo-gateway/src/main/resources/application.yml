@@ -1,0 +1,39 @@
+server:
+  port: 8072
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://demo-eureka:8070/eureka/
+spring:
+  application:
+    name: demo-gateway
+  cloud:
+    loadbalancer.ribbon.enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#      routes:
+#        - id: demo-api
+#          uri: lb://demo-api
+#          predicates:
+#            - Path=/demo/**
+#          filters:
+#            - RewritePath=/demo/(?<path>.*), /$\{path}
+#        - id: demo-job
+#          uri: lb://demo-job
+#          predicates:
+#            - Path=/demo/start/**
+#          filters:
+#            - RewritePath=/demo/start/(?<path>.*), /$\{path}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

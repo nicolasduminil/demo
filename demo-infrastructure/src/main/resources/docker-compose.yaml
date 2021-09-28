@@ -93,6 +93,19 @@ services:
     container_name: demo-eureka
     ports:
       - "8070:8070"
+  demo-gateway:
+    image: demo-gateway:0.0.1-SNAPSHOT
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.35
+        aliases:
+          - demo-gateway
+    depends_on:
+      - demo-eureka
+    hostname: demo-gateway
+    container_name: demo-gateway
+    ports:
+      - "8072:8072"
   demo-api:
     image: demo-api:0.0.1-SNAPSHOT
     networks:
@@ -103,12 +116,30 @@ services:
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
-      database:
-        condition: service_healthy
+      - database
+      - demo-eureka
+      - demo-gateway
     hostname: demo-api
     container_name: demo-api
     ports:
       - "8080:8080"
+  demo-api-2:
+    image: demo-api:0.0.1-SNAPSHOT
+    networks:
+      demo-network:
+        ipv4_address: 192.168.96.36
+        aliases:
+          - demo-api-2
+    environment:
+      DATABASESERVER_PORT: "5432"
+    depends_on:
+      - database
+      - demo-eureka
+      - demo-gateway
+    hostname: demo-api
+    container_name: demo-api-2
+    ports:
+      - "8090:8080"
   demo-job:
     image: demo-job:0.0.1-SNAPSHOT
     networks:
@@ -119,8 +150,9 @@ services:
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
-      database:
-        condition: service_healthy
+      - database
+      - demo-eureka
+      - demo-gateway
     hostname: demo-job
     container_name: demo-job
     ports:

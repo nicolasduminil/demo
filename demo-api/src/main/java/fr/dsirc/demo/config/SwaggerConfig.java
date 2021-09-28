@@ -8,15 +8,16 @@ import springfox.documentation.spi.*;
 import springfox.documentation.spring.web.plugins.*;
 import springfox.documentation.swagger2.annotations.*;
 
+import java.net.*;
 import java.util.*;
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig
 {
-  ApiInfo apiInfo()
+  ApiInfo apiInfo() throws UnknownHostException
   {
-    return new ApiInfo("Demo API",
+    return new ApiInfo("Demo API on " + InetAddress.getLocalHost().toString(),
       "Rest API for demonstrating the Demo application.",
       "0.0.1-SNAPSHOT", "Terms of service",
       new Contact("Nicolas DUMINIL", "www.agirc-arrco.fr", "nduminil-ext@agirc-arrco.fr"),
@@ -24,7 +25,7 @@ public class SwaggerConfig
   }
 
   @Bean
-  public Docket configureControllerPackageAndConvertors()
+  public Docket configureControllerPackageAndConvertors() throws UnknownHostException
   {
     return new Docket(DocumentationType.SWAGGER_2)
       .select()
