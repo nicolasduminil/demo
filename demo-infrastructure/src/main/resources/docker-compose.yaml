@@ -139,4 +139,6 @@ services:
         condition: service_healthy
     hostname: demo-xa
     container_name: demo-xa
+    ports:
+      - "8086:8080"
 

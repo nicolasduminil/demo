@@ -47,10 +47,6 @@
       <groupId>fr.dsirc</groupId>
       <artifactId>demo-jaxb</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>

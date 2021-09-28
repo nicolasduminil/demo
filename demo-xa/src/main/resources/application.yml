@@ -5,10 +5,6 @@ spring:
     broker-url: tcp://192.168.96.20:61616
     user: admin
     password: admin
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
   datasource:
     url: jdbc:postgresql://192.168.96.30:5432/demo2
     xa:
@@ -16,14 +12,6 @@ spring:
     username: postgres
     password: postgres
     initialization-mode: always
-  eureka:
-    instance:
-      preferIpAddress: true
-    client:
-      registerWithEureka: true
-      fetchRegistry: true
-      serviceUrl:
-        defaultZone: http://192.168.96.27:8070/eureka/
   jta:
     atomikos:
       connectionfactory:
@@ -38,6 +26,24 @@ spring:
         test-query: "select 1"
       properties:
         default-jta-timeout: 300000
+  jmx:
+    enabled: true
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://192.168.96.27:8070/eureka/
 logging:
   level:
     com.atomikos.datasource.xa.XAResourceTransaction: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+hawtio:
+  authenticationEnabled: false
