@@ -7,15 +7,17 @@ import org.springframework.stereotype.*;
 public class JmsConsumer extends RouteBuilder
 {
   @Override
-  public void configure() throws Exception
+  public void configure()
   {
     from("activemq:queue:demoQueue")
       .log (">>> We got :#${body}")
       .routeId("demoRoute")
       .transacted("policyPropagationRequired")
+      .log (">>> Inserting :#${body} into the database")
       .to("sql:insert into message(contents) values(:#${body})")
-      .log(">>> JmsConsumer.configure(): 30s delay to simulate an outage")
+      .log (">>> Inserted !")
+      /*.log(">>> JmsConsumer.configure(): 30s delay to simulate an outage")
       .delay(30000)
-      .log(">>> JmsConsumer.configure(): end of 30s delay. Transaction should recover");
+      .log(">>> JmsConsumer.configure(): end of 30s delay. Transaction should recover")*/;
   }
 }

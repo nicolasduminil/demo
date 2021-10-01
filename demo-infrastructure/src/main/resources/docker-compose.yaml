@@ -2,16 +2,16 @@ version: "2.4"
 networks:
   demo-network:
     driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.96.0/20
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 192.168.96.0/20
 services:
   database:
     image: postgres:latest
     networks:
       demo-network:
-        ipv4_address: 192.168.96.2
+#        ipv4_address: 192.168.96.2
         aliases:
           - postgreSQL
     hostname: postgreSQL
@@ -32,7 +32,7 @@ services:
     image: postgres:latest
     networks:
       demo-network:
-        ipv4_address: 192.168.96.30
+#        ipv4_address: 192.168.96.30
         aliases:
           - postgreSQL2
     hostname: postgreSQL2
@@ -53,7 +53,7 @@ services:
     image: rmohr/activemq
     networks:
       demo-network:
-        ipv4_address: 192.168.96.20
+#        ipv4_address: 192.168.96.20
         aliases:
           - activemq
     hostname: activemq
@@ -69,7 +69,7 @@ services:
     image: adminer
     networks:
       demo-network:
-        ipv4_address: 192.168.96.10
+#        ipv4_address: 192.168.96.10
         aliases:
           - adminer
     depends_on:
@@ -83,7 +83,7 @@ services:
     image: demo-eureka:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.27
+#        ipv4_address: 192.168.96.27
         aliases:
           - demo-eureka
     depends_on:
@@ -97,7 +97,7 @@ services:
     image: demo-gateway:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.35
+#        ipv4_address: 192.168.96.35
         aliases:
           - demo-gateway
     depends_on:
@@ -110,7 +110,7 @@ services:
     image: demo-api:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.3
+#        ipv4_address: 192.168.96.3
         aliases:
           - demo-api
     environment:
@@ -127,7 +127,7 @@ services:
     image: demo-api:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.36
+#        ipv4_address: 192.168.96.36
         aliases:
           - demo-api-2
     environment:
@@ -144,7 +144,7 @@ services:
     image: demo-job:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.5
+#        ipv4_address: 192.168.96.5
         aliases:
           - demo-job
     environment:
@@ -161,7 +161,7 @@ services:
     image: demo-xa:0.0.1-SNAPSHOT
     networks:
       demo-network:
-        ipv4_address: 192.168.96.7
+#        ipv4_address: 192.168.96.7
         aliases:
           - demo-xa
     environment:

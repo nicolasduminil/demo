@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    image.name: demo-eureka:0.0.1-SNAPSHOT
+  creationTimestamp: null
+  labels:
+    category: infra
+  name: "spring-cloud-eureka-service"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      category: infra
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+      creationTimestamp: null
+      labels:
+        category: infra
+    spec:
+      containers:
+      - image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-eureka:0.0.1-SNAPSHOT
+        imagePullPolicy: ""
+        name: "spring-cloud-eureka-service"
+        ports:
+        - containerPort: 8070
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

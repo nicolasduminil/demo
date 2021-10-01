@@ -21,6 +21,6 @@ public class StartJobController
   public ResponseEntity<ExitStatus> startBatchProcessing(@RequestBody String jobName) throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException
   {
     Job job = applicationContext.getBean(jobName, Job.class);
-    return new ResponseEntity<ExitStatus>(jobLauncher.run(job, new JobParameters()).getExitStatus(), HttpStatus.OK);
+    return new ResponseEntity<>(jobLauncher.run(job, new JobParameters()).getExitStatus(), HttpStatus.OK);
   }
 }

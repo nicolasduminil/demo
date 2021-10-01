@@ -18,6 +18,7 @@
     <module>demo-eureka</module>
     <module>demo-gateway</module>
     <module>demo-infrastructure</module>
+    <module>demo-aws</module>
   </modules>
   <groupId>fr.dsirc</groupId>
   <artifactId>demo</artifactId>
