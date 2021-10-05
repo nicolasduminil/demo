@@ -4,7 +4,7 @@ import fr.dsirc.demo.jpa.*;
 import fr.dsirc.demo.model.*;
 import org.mapstruct.*;
 
-@Mapper(uses = {AddressMapper.class, PensionMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface IndividualMapper
 {
   Individual toIndividual(IndividualEntity individualEntity);

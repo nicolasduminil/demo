@@ -86,12 +86,13 @@ public class IndividualServiceImpl implements IndividualService
     List<IndividualType> individualTypeList = individuals.getIndividualTypes();
     individualTypeList.forEach(individualType -> {
       log.info ("### IndividualServiceImpl.bulkCreateIndividual(): Have got an individual type having ref {}, address {} and pension {}", individualType.getRef(), individualType.getAddressTypes().size(), individualType.getPensionTypes().size());
-      IndividualEntity individualEntity = CommonMappers.individualTypeToIndividualEntity(individualType);
+      IndividualEntity individualEntity = individualTypeMapper.fromIndividualType(individualType);
       if (individualEntity == null)
         log.info ("### IndividualServiceImpl.bulkCreateIndividual(): Have got a null individual entity");
       else
       {
         log.info("### IndividualServiceImpl.bulkCreateIndividual(): Have got an individual entity having ref {}, address {} and pension {}", individualEntity.getRef(), individualEntity.getAddresses().size(), individualEntity.getPensions().size());
+        log.info("### IndividualServiceImpl.bulkCreateIndividual(): Have got an individual entity having 1st address individual {}", individualEntity.getAddresses().get(0).getIndividual());
         individualRepo.saveAndFlush(individualEntity);
       }
       //individualRepo.save(individualTypeMapper.fromIndividualType(individualType));

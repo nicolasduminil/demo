@@ -17,7 +17,7 @@ public class SwaggerConfig
 {
   ApiInfo apiInfo() throws UnknownHostException
   {
-    return new ApiInfo("Demo API on " + InetAddress.getLocalHost().toString(),
+    return new ApiInfo("Demo API",
       "Rest API for demonstrating the Demo application.",
       "0.0.1-SNAPSHOT", "Terms of service",
       new Contact("Nicolas DUMINIL", "www.agirc-arrco.fr", "nduminil-ext@agirc-arrco.fr"),

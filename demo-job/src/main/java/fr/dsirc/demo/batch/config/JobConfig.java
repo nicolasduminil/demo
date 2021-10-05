@@ -32,6 +32,7 @@ import org.springframework.data.jpa.repository.config.*;
 import org.springframework.jms.support.converter.*;
 
 import javax.xml.bind.*;
+import javax.xml.datatype.*;
 import java.io.*;
 import java.util.*;
 
@@ -159,7 +160,7 @@ public class JobConfig
         marshaller.marshal(individualTypeMapper.toIndividualType(item), sw);
         jmsProducer.send(sw.toString());
        }
-      catch (JAXBException e)
+      catch (JAXBException | DatatypeConfigurationException e)
       {
         log.error("### JobConfig.individualItemWriter(): Exception {}", e);
         e.printStackTrace();

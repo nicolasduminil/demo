@@ -57,14 +57,14 @@ public class TestMappers
     IndividualType individualType = individualTypes.get(0);
     assertNotNull(individualType.getPensionTypes());
     assertNotNull(individualType.getAddressTypes());
-    IndividualEntity individualEntity = CommonMappers.individualTypeToIndividualEntity(individualType);
+    IndividualEntity individualEntity = individualTypeMapper.fromIndividualType(individualType);
     assertNotNull(individualEntity);
     assertEquals("laurence-charron", individualEntity.getRef());
     assertNotNull(individualEntity.getAddresses());
     assertEquals(2, individualEntity.getAddresses().size());
     assertNotNull(individualEntity.getPensions());
     assertEquals(2, individualEntity.getPensions().size());
-    individualType = CommonMappers.individualEntityToIndividualType(individualEntity);
+    individualType = individualTypeMapper.toIndividualType(individualEntity);
     assertNotNull(individualType);
     assertEquals("laurence-charron", individualType.getRef());
     assertNotNull(individualType.getAddressTypes());

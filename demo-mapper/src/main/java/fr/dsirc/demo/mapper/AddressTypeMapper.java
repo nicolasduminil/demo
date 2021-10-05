@@ -4,7 +4,7 @@ import fr.dsirc.demo.jaxb.*;
 import fr.dsirc.demo.jpa.*;
 import org.mapstruct.*;
 
-@Mapper(uses = {AddressTypeListMapper.class, PensionTypeListMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AddressTypeMapper
 {
   AddressType toAddressType (AddressEntity addressEntity);

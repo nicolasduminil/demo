@@ -6,7 +6,7 @@ import org.mapstruct.*;
 
 import java.util.*;
 
-@Mapper(uses = {AddressTypeListMapper.class, PensionTypeListMapper.class}, unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface PensionTypeListMapper
 {
   List<PensionType> toPensionTypeList (List<PensionEntity> pensions);
