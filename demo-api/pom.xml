@@ -37,22 +37,6 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-loadbalancer</artifactId>
     </dependency>
-    <!--dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-config-server</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-sleuth</artifactId>
-    </dependency-->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
@@ -138,13 +122,9 @@
         <groupId>com.spotify</groupId>
         <artifactId>dockerfile-maven-plugin</artifactId>
         <configuration>
-          <!--repository>nicolasduminil/demo</repository-->
-          <repository>${project.build.finalName}</repository>
+          <repository>172.18.0.2:5000/${project.build.finalName}</repository>
           <tag>${project.version}</tag>
           <skipDockerInfo>true</skipDockerInfo>
-          <!--buildArgs>
-            <JAR_FILE>target/${project.artifactId}.jar</JAR_FILE>
-          </buildArgs-->
         </configuration>
         <executions>
           <execution>
@@ -152,8 +132,8 @@
             <phase>package</phase>
             <goals>
               <goal>build</goal>
-              <!--goal>tag</goal>
-              <goal>push</goal-->
+              <goal>tag</goal>
+              <goal>push</goal>
             </goals>
           </execution>
         </executions>

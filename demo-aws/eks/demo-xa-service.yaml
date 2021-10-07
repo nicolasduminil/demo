@@ -1,20 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    image.name: demo-gateway:0.0.1-SNAPSHOT
-  creationTimestamp: null
-  labels:
-    category: infra
-  name: "spring-cloud-gateway-service"
+  name: demo-xa-service
 spec:
   type: NodePort
   ports:
-    - name: "8072"
-      port: 8072
-      targetPort: 8072
-      nodePort: 31200
+    - name: http
+      port: 8085
+      targetPort: 8086
+      nodePort: 31723
   selector:
-    category: infra
-status:
-  loadBalancer: {}
+    name: demo-xa
+    category: business
+

@@ -1,41 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    image.name: demo-gateway:0.0.1-SNAPSHOT
-  creationTimestamp: null
-  labels:
-    category: infra
-  name: "spring-cloud-gateway-service"
+  name: adminer-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
       category: infra
-  strategy: {}
   template:
     metadata:
-      annotations:
-        image.name: demo-gateway:0.0.1-SNAPSHOT
-      creationTimestamp: null
+      name: adminer-deployment
       labels:
         category: infra
     spec:
       containers:
-        - env:
-            - name: EUREKASERVER_PORT
-              value: "8070"
-            - name: EUREKASERVER_URI
-              value: http://eurekaserver:8070/eureka/
-            - name: SERVER_PORT
-              value: "8072"
-          image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-gateway:0.0.1-SNAPSHOT
-          imagePullPolicy: ""
-          name: "spring-cloud-gateway-service"
-          ports:
-            - containerPort: 8072
-          resources: {}
-      restartPolicy: Always
-      serviceAccountName: ""
-      volumes: null
-status: {}
+        - image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/adminer:latest
+          name: "adminer"

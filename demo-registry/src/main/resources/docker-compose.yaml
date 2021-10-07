@@ -1,0 +1,20 @@
+version: "2.4"
+networks:
+  demo-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/20
+services:
+  registry:
+    image: registry:latest
+    networks:
+      demo-network:
+        ipv4_address: 172.18.0.2
+        aliases:
+          - registry
+    hostname: registry
+    container_name: registry
+    ports:
+      - "5000:5000"

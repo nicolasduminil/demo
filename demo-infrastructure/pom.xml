@@ -14,6 +14,30 @@
     <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-install</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-jar</id>
+            <phase>none</phase>
+            <configuration>
+              <finalName>unwanted</finalName>
+              <classifier>unwanted</classifier>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
         <inherited>false</inherited>
@@ -27,7 +51,6 @@
             <configuration>
               <composeFile>${project.basedir}/src/main/resources/docker-compose.yaml</composeFile>
               <detachedMode>true</detachedMode>
-              <removeOrphans>true</removeOrphans>
             </configuration>
           </execution>
           <execution>
@@ -39,7 +62,6 @@
             <configuration>
               <composeFile>${project.basedir}/src/main/resources/docker-compose.yaml</composeFile>
               <removeVolumes>true</removeVolumes>
-              <removeOrphans>true</removeOrphans>
             </configuration>
           </execution>
         </executions>
