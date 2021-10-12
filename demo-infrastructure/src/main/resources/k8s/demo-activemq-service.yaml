@@ -10,5 +10,4 @@ spec:
       targetPort: 8161
       nodePort: 30823
   selector:
-    app: activemq
-    category: infra
+    app: active-mq

@@ -6,12 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      category: business
+      app: job
   template:
     metadata:
+      name: demo-job-deployment
       labels:
-        name: demo-job
-        category: business
+        app: job
     spec:
       containers:
         - env:
@@ -19,5 +19,5 @@ spec:
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-          image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-job:0.0.1-SNAPSHOT
-          name: "demo-job"
+          image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
+          name: demo-job

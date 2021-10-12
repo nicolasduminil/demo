@@ -6,13 +6,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      category: infra
+      app: active-mq
   template:
     metadata:
       name: activemq-deployment
       labels:
-        category: infra
+        app: active-mq
     spec:
       containers:
-        - image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/rmohr/activemq:latest
-          name: "activemq"
+        - image: rmohr/activemq:latest
+          name: activemq

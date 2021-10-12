@@ -10,6 +10,5 @@ spec:
       targetPort: 8080
       nodePort: 30223
   selector:
-    app: demo-api
-    category: business
+    app: api
 

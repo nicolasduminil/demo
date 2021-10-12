@@ -6,11 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      category: business
+      app: xa
   template:
     metadata:
+      name: demo-xa-deployment
       labels:
-        category: business
+        app: xa
     spec:
       containers:
         - env:
@@ -18,5 +19,5 @@ spec:
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-          image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-xa:0.0.1-SNAPSHOT
-          name: "demo-xa"
+          image: 172.19.0.2:5000/demo-xa:0.0.1-SNAPSHOT
+          name: demo-xa

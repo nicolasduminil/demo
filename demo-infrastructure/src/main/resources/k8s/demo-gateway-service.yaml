@@ -10,5 +10,5 @@ spec:
       targetPort: 8072
       nodePort: 30433
   selector:
-    category: infra
+    app: gateway
 

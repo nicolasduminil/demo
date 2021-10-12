@@ -6,13 +6,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      category: infra
+      app: eureka
   template:
     metadata:
-      name: demo-eureka
+      name: spring-cloud-eureka-deployment
       labels:
-        category: infra
+        app: eureka
     spec:
       containers:
-      - image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-eureka:0.0.1-SNAPSHOT
+      - image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT
         name: demo-eureka

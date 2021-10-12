@@ -10,5 +10,4 @@ spec:
       targetPort: 8070
       nodePort: 30333
   selector:
-    app: demo-eureka
-    category: infra
+    app: eureka

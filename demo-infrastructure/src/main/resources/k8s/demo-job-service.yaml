@@ -10,7 +10,4 @@ spec:
       targetPort: 8085
       nodePort: 30523
   selector:
-    app: demo-job
-    category: business
-status:
-  loadBalancer: {}
+    app: job

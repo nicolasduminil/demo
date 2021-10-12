@@ -6,13 +6,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      category: infra
+      app: adminer-ui
   template:
     metadata:
       name: adminer-deployment
       labels:
-        category: infra
+        app: adminer-ui
     spec:
       containers:
-        - image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/adminer:latest
-          name: "adminer"
+        - image: adminer:latest
+          name: adminer
