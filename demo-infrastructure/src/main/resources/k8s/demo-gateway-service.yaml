@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-cloud-gateway-service
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 8072
+      targetPort: 8072
+      nodePort: 30433
+  selector:
+    category: infra
+

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-job-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      category: business
+  template:
+    metadata:
+      labels:
+        name: demo-job
+        category: business
+    spec:
+      containers:
+        - env:
+            - name: EUREKASERVER_PORT
+              value: "8070"
+            - name: EUREKASERVER_URI
+              value: http://eurekaserver:8070/eureka/
+          image: 459436678662.dkr.ecr.eu-west-3.amazonaws.com/demo-job:0.0.1-SNAPSHOT
+          name: "demo-job"

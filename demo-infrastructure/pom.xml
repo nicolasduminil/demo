@@ -49,7 +49,7 @@
               <goal>up</goal>
             </goals>
             <configuration>
-              <composeFile>${project.basedir}/src/main/resources/docker-compose.yaml</composeFile>
+              <composeFile>${project.basedir}/docker-compose.yaml</composeFile>
               <detachedMode>true</detachedMode>
             </configuration>
           </execution>
@@ -60,7 +60,7 @@
               <goal>down</goal>
             </goals>
             <configuration>
-              <composeFile>${project.basedir}/src/main/resources/docker-compose.yaml</composeFile>
+              <composeFile>${project.basedir}/docker-compose.yaml</composeFile>
               <removeVolumes>true</removeVolumes>
             </configuration>
           </execution>

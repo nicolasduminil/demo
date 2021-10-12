@@ -57,7 +57,7 @@
         <groupId>com.spotify</groupId>
         <artifactId>dockerfile-maven-plugin</artifactId>
         <configuration>
-          <repository>172.18.0.2:5000/${project.build.finalName}</repository>
+          <repository>172.19.0.2:5000/${project.build.finalName}</repository>
           <tag>${project.version}</tag>
           <skipDockerInfo>true</skipDockerInfo>
         </configuration>
