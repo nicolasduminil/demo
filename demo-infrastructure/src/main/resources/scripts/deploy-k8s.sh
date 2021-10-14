@@ -1,7 +1,7 @@
 #
 # Start minikube in insecure mode
 #
-minikube start --network-plugin=cni --enable-default-cni --bootstrapper=kubeadm --insecure-registry=172.19.0.2
+minikube start --insecure-registry=172.19.0.2
 #
 # Deploy the k8s services
 #
