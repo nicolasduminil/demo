@@ -14,5 +14,5 @@ spec:
         app: eureka
     spec:
       containers:
-      - image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT
-        name: demo-eureka
+        - name: demo-eureka
+          image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-progres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgreSQL
+  template:
+    metadata:
+      name: test-progres
+      labels:
+        app: postgreSQL
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          env:
+            - name: EUREKASERVER_PORT
+              value: "8070"
+            - name: EUREKASERVER_URI
+              value: http://eurekaserver:8070/eureka/
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTRGRES_DB
+              value: demo

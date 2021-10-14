@@ -14,10 +14,10 @@ spec:
         app: gateway
     spec:
       containers:
-        - env:
+        - name: demo-gateway
+          image: spring-cloud-eureka-deployment/demo-gateway:0.0.1-SNAPSHOT
+          env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-          image: spring-cloud-eureka-deployment/demo-gateway:0.0.1-SNAPSHOT
-          name: demo-gateway

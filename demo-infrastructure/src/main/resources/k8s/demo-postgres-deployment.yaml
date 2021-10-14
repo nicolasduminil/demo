@@ -14,10 +14,16 @@ spec:
         app: postgreSQL
     spec:
       containers:
-        - env:
+        - name: postgres
+          image: postgres:latest
+          env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-          image: 172.19.0.2:5000/postgres:0.0.1-SNAPSHOT
-          name: postgres
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTRGRES_DB
+              value: demo

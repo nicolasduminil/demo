@@ -14,10 +14,10 @@ spec:
         app: job
     spec:
       containers:
-        - env:
+        - name: demo-job
+          image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
+          env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-          image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
-          name: demo-job
