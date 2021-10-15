@@ -1,18 +1,7 @@
 version: "2.4"
-networks:
-  net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.18.0.0/20
 services:
   database:
     image: postgres:latest
-    networks:
-      net:
-        aliases:
-          - postgreSQL
     hostname: postgreSQL
     container_name: postgreSQL
     ports:
@@ -29,10 +18,6 @@ services:
     command: postgres -c "max_prepared_transactions=100"
   database2:
     image: postgres:latest
-    networks:
-      net:
-        aliases:
-          - postgreSQL2
     hostname: postgreSQL2
     container_name: postgreSQL2
     ports:
@@ -49,10 +34,6 @@ services:
     command: postgres -c "max_prepared_transactions=100"
   activemq:
     image: rmohr/activemq
-    networks:
-      net:
-        aliases:
-          - activemq
     hostname: activemq
     container_name: activemq
     user: root
@@ -64,10 +45,6 @@ services:
       - ./active-mq/data/:/opt/activemq/data
   adminer:
     image: adminer
-    networks:
-      net:
-        aliases:
-          - adminer
     depends_on:
       database:
         condition: service_healthy
@@ -76,11 +53,7 @@ services:
     ports:
       - 8081:8080
   demo-eureka:
-    image: 172.19.0.2:5000/demo-eureka:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-eureka
+    image: localhost:5000/demo-eureka:0.0.1-SNAPSHOT
     depends_on:
       database:
         condition: service_healthy
@@ -89,11 +62,7 @@ services:
     ports:
       - "8070:8070"
   demo-gateway:
-    image: 172.19.0.2:5000/demo-gateway:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-gateway
+    image: localhost:5000/demo-gateway:0.0.1-SNAPSHOT
     depends_on:
       - demo-eureka
     hostname: demo-gateway
@@ -101,11 +70,7 @@ services:
     ports:
       - "8072:8072"
   demo-api:
-    image: 172.19.0.2:5000/demo-api:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-api
+    image: localhost:5000/demo-api:0.0.1-SNAPSHOT
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
@@ -117,11 +82,7 @@ services:
     ports:
       - "8080:8080"
   demo-api-2:
-    image: 172.19.0.2:5000/demo-api:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-api-2
+    image: localhost:5000/demo-api:0.0.1-SNAPSHOT
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
@@ -133,11 +94,7 @@ services:
     ports:
       - "8090:8080"
   demo-job:
-    image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-job
+    image: localhost:5000/demo-job:0.0.1-SNAPSHOT
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
@@ -149,11 +106,7 @@ services:
     ports:
       - "8085:8080"
   demo-xa:
-    image: 172.19.0.2:5000/demo-xa:0.0.1-SNAPSHOT
-    networks:
-      net:
-        aliases:
-          - demo-xa
+    image: localhost:5000/demo-xa:0.0.1-SNAPSHOT
     environment:
       DATABASESERVER_PORT: "5432"
     depends_on:
@@ -163,4 +116,3 @@ services:
     container_name: demo-xa
     ports:
       - "8086:8080"
-

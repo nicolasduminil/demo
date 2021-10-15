@@ -1,19 +1,7 @@
 version: "2.4"
-networks:
-  net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/20
 services:
   registry:
     image: registry:latest
-    networks:
-      net:
-        ipv4_address: 172.19.0.2
-        aliases:
-          - registry
     hostname: registry
     container_name: registry
     ports:
@@ -22,17 +10,12 @@ services:
       - ./registry-config/config.yml:/etc/docker/registry/config.yml
   registry-ui:
     image: joxit/docker-registry-ui:latest
-    networks:
-      net:
-        ipv4_address: 172.19.0.3
-        aliases:
-          - registry-ui
     environment:
       REGISTRY_TITLE: AGIRC-ARRCO private docker registry
-      REGISTRY_URL: http://172.19.0.2:5000
+      REGISTRY_URL: http://localhost:5000
       DELETE_IMAGES: "true"
       SINGLE_REGISTRY: "true"
-      NGINX_PROXY_PASS_URL: http://172.19.0.2:5000
+      NGINX_PROXY_PASS_URL: http://registry:5000
     depends_on:
       - registry
     hostname: registry-ui

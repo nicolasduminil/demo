@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: demo-gateway
-          image: spring-cloud-eureka-deployment/demo-gateway:0.0.1-SNAPSHOT
+          image: localhost:5000/demo-gateway:0.0.1-SNAPSHOT
           env:
             - name: EUREKASERVER_PORT
               value: "8070"

@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: demo-job
-          image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
+          #image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
+          image: localhost:5000/demo-job:0.0.1-SNAPSHOT
           env:
             - name: EUREKASERVER_PORT
               value: "8070"

@@ -1,7 +1,15 @@
 #
 # Start minikube in insecure mode
 #
-minikube start --insecure-registry=172.19.0.2
+minikube start --insecure-registry=172.0.0.0/24
+#
+# This is an add-on to run the registry into the cluster
+#
+minikube addons enable registry
+#
+# Configure the hostname for minikube
+#
+grep -q "$(minikube ip)" /etc/hosts || echo  -e "$(minikube ip)\tlocalhost" | sudo tee -a /etc/hosts
 #
 # Deploy the k8s services
 #

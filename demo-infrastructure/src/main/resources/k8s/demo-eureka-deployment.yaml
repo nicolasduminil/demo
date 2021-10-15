@@ -15,4 +15,5 @@ spec:
     spec:
       containers:
         - name: demo-eureka
-          image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT
+          #image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT
+          image: localhost:5000/demo-eureka:0.0.1-SNAPSHOT
