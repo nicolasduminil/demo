@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-cloud-eureka-deployment
+  name: demo-eureka
+  labels:
+    fr.dsirc.service: demo-eureka
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: eureka
+     fr.dsirc.service: demo-eureka
   template:
     metadata:
-      name: spring-cloud-eureka-deployment
+      name: demo-eureka
       labels:
-        app: eureka
+        fr.dsirc.service: demo-eureka
     spec:
       containers:
         - name: demo-eureka
-          #image: spring-cloud-eureka-deployment/demo-eureka:0.0.1-SNAPSHOT
           image: localhost:5000/demo-eureka:0.0.1-SNAPSHOT

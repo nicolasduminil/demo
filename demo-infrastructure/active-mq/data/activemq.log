@@ -1737,3 +1737,12 @@
 2021-10-15 15:55:53,726 | INFO  | Initializing Spring FrameworkServlet 'dispatcher' | /admin | main
 2021-10-15 15:55:53,828 | INFO  | No Spring WebApplicationInitializer types detected on classpath | /api | main
 2021-10-15 15:55:53,877 | INFO  | jolokia-agent: Using policy access restrictor classpath:/jolokia-access.xml | /api | main
+2021-10-15 17:43:06,877 | WARN  | Transport Connection to: tcp://172.29.0.7:37902 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37902@61616
+2021-10-15 17:43:06,878 | WARN  | Transport Connection to: tcp://172.29.0.7:37906 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37906@61616
+2021-10-15 17:43:06,878 | WARN  | Transport Connection to: tcp://172.29.0.7:37904 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37904@61616
+2021-10-15 17:43:06,882 | WARN  | Transport Connection to: tcp://172.29.0.7:37914 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37914@61616
+2021-10-15 17:43:06,881 | WARN  | Transport Connection to: tcp://172.29.0.7:37912 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37912@61616
+2021-10-15 17:43:06,880 | WARN  | Transport Connection to: tcp://172.29.0.7:37910 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37910@61616
+2021-10-15 17:43:06,879 | WARN  | Transport Connection to: tcp://172.29.0.7:37908 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37908@61616
+2021-10-15 17:43:06,885 | WARN  | Transport Connection to: tcp://172.29.0.7:37918 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37918@61616
+2021-10-15 17:43:06,882 | WARN  | Transport Connection to: tcp://172.29.0.7:37916 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///172.29.0.7:37916@61616

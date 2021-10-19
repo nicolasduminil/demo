@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-api-deployment
+  name: demo-api
+  labels:
+    fr.dsirc.service: demo-api
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: api
+      fr.dsirc.service: demo-api
   template:
     metadata:
       name: demo-api-deployment
       labels:
-        app: api
+        fr.dsirc.service: demo-api
     spec:
       containers:
         - name: demo-api
-          #image: 172.19.0.2:5000/demo-api:0.0.1-SNAPSHOT
           image: localhost:5000/demo-api:0.0.1-SNAPSHOT
           env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
-              value: http://eurekaserver:8070/eureka/
+              value: http://demo-eureka:8070/eureka/

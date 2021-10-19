@@ -1,29 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deployment
+  labels:
+    fr.dsirc.service: postgresql
+  name: postgresql
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: postgreSQL
+      fr.dsirc.service: postgresql
   template:
     metadata:
       name: postgres-deployment
       labels:
-        app: postgreSQL
+        fr.dsirc.service: postgresql
     spec:
+      hostname: postgresql
       containers:
-        - name: postgres
+        - name: postgresql
           image: postgres:latest
+          ports:
+            - containerPort: 5432
           env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
               value: http://eurekaserver:8070/eureka/
-            - name: POSTGRES_USER
-              value: postgres
-            - name: POSTGRES_PASSWORD
-              value: postgres
-            - name: POSTRGRES_DB
-              value: demo
+          envFrom:
+            - configMapRef:
+                name: postgresql

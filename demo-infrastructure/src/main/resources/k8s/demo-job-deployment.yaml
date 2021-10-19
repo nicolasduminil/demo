@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-job-deployment
+  name: demo-job
+  labels:
+    fr.dsirc.service: demo-job
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: job
+      fr.dsirc.service: demo-job
   template:
     metadata:
-      name: demo-job-deployment
+      name: demo-job
       labels:
-        app: job
+        fr.dsirc.service: demo-job
     spec:
       containers:
         - name: demo-job
-          #image: 172.19.0.2:5000/demo-job:0.0.1-SNAPSHOT
           image: localhost:5000/demo-job:0.0.1-SNAPSHOT
           env:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
-              value: http://eurekaserver:8070/eureka/
+              value: http://demo-eureka:8070/eureka/

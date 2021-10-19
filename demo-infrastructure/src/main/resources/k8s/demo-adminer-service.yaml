@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: adminer-service
+  labels:
+    fr.dsirc.service: adminer
 spec:
   type: NodePort
   ports:
@@ -10,5 +12,5 @@ spec:
       targetPort: 8080
       nodePort: 30123
   selector:
-    app: adminer-ui
+    fr.dsirc.service: adminer
 

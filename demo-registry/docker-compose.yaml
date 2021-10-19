@@ -15,9 +15,9 @@ services:
       REGISTRY_URL: http://localhost:5000
       DELETE_IMAGES: "true"
       SINGLE_REGISTRY: "true"
-      NGINX_PROXY_PASS_URL: http://registry:5000
-    depends_on:
-      - registry
+      NGINX_PROXY_PASS_URL: http://localhost:80
+    #depends_on:
+      #- registry
     hostname: registry-ui
     container_name: registry-ui
     ports:

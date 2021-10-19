@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-cloud-gateway-deployment
+  name: demo-gateway
+  labels:
+    fr.dsirc.service: demo-gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gateway
+      fr.dsirc.service: demo-gateway
   template:
     metadata:
       labels:
-        name: spring-cloud-gateway-deployment
-        app: gateway
+        name: demo-gateway
+        fr.dsirc.service: demo-gateway
     spec:
       containers:
         - name: demo-gateway
@@ -20,4 +22,4 @@ spec:
             - name: EUREKASERVER_PORT
               value: "8070"
             - name: EUREKASERVER_URI
-              value: http://eurekaserver:8070/eureka/
+              value: http://demo-eureka:8070/eureka/

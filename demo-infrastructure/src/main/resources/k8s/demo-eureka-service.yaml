@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: spring-cloud-eureka-service
+  name: demo-eureka
+  labels:
+    fr.dsirc.service: demo-eureka
 spec:
   type: NodePort
   ports:
@@ -10,4 +12,4 @@ spec:
       targetPort: 8070
       nodePort: 30333
   selector:
-    app: eureka
+    fr.dsirc.service: demo-eureka

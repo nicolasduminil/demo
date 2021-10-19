@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adminer-deployment
+  name: adminer
+  labels:
+    fr.dsirc.service: adminer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: adminer-ui
+      fr.dsirc.service: adminer
   template:
     metadata:
-      name: adminer-deployment
+      name: adminer
       labels:
-        app: adminer-ui
+        fr.dsirc.service: adminer
     spec:
       containers:
         - image: adminer:latest

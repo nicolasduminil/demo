@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-xa-service
+  name: demo-xa
+  labels:
+    fr.dsirc.service: demo-xa
 spec:
   type: NodePort
   ports:
@@ -10,5 +12,5 @@ spec:
       targetPort: 8085
       nodePort: 31723
   selector:
-    app: xa
+    fr.dsirc.service: demo-xa
 

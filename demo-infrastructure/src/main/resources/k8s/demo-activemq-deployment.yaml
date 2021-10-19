@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: activemq-deployment
+  name: activemq
+  labels:
+    fr.dsirc.service: activemq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: active-mq
+      fr.dsirc.service: activemq
   template:
     metadata:
-      name: activemq-deployment
+      name: activemq
       labels:
-        app: active-mq
+        fr.dsirc.service: activemq
     spec:
       containers:
         - image: rmohr/activemq:latest
